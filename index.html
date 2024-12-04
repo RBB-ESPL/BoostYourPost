@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boost Your Post</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nau+Sea&display=swap');
+        body {
+            font-family: 'Nau Sea', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        header, main, footer {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #393939;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        main {
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            overflow-y: auto;
+            max-height: 70vh;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #393939;
+            color: white;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #393939;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #2e2e2e;
+        }
+        .dice {
+            font-size: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Boost Your Post</h1>
+    </header>
+    <main id="home">
+        <h2>Welcome to Boost Your Post</h2>
+        <p>Create an Instagram post that becomes as popular as possible while respecting the algorithm's criteria.</p>
+        <a href="#game" class="button">Start Game</a>
+        <a href="#rules" class="button">Game Rules</a>
+    </main>
+    <main id="game" style="display:none;">
+        <h2>Game in Progress</h2>
+        <div class="dice" id="dice6">🎲</div>
+        <p id="result6"></p>
+        <div class="dice" id="dice3">⚂</div>
+        <p id="result3"></p>
+        <a href="#home" class="button">Back to Home</a>
+    </main>
+    <main id="rules" style="display:none;">
+        <h2>Game Rules: Boost your post</h2>
+        <p>Objective of the Game<br>
+        The goal is to create an Instagram post that becomes as popular as possible while respecting the algorithm’s criteria. Players accumulate SEO points represented by tokens for likes, comments, shares, and saves.<br><br>
+        Game Levels<br>
+        There are two game modes: easy and hard. In the hard mode, the “event cards” part is added.<br><br>
+        Materials<br>
+            • 1 game board (optional) or central space for the bags<br>
+            • Bags to draw from: Engagements, Hashtags, and Keywords<br>
+            • Tokens: Likes, Comments, Shares, Saves<br>
+            • Event Cards<br>
+            • 1 six-sided die<br>
+            • Post Template Cards (blank Instagram posts for each player)<br>
+            • Sheets to record scores<br><br>
+        Setup<br>
+            1. Distribute a Post Template Card to each player.<br>
+            2. Place the draw bags (Engagements, Hashtags, and Keywords) within reach.<br>
+            3. Place the Event Card deck in the center.<br><br>
+        Game Turn<br>
+        The game is played over several rounds, with each player taking turns.<br><br>
+        First Round<br>
+            1. Dice Roll: Each player rolls the die three times. Each result corresponds to the number of elements they can draw:<br>
+                ○ 1st draw: Draw Hashtags<br>
+                ○ 2nd draw: Draw Keywords<br>
+                ○ 3rd draw: Draw Engagements<br>
+            2. Adding Boost Points:<br>
+                ○ Hashtags:<br>
+                    - Popular Hashtag: Multiplies engagement points by x2.<br>
+                    - Average Hashtag: Multiplies engagement points by x1.5.<br>
+                    - Basic Hashtag: No effect.<br>
+                ○ Keywords:<br>
+                    - Relevant Keyword: Adds 3 slots (virtual spaces for engagements on the post).<br>
+                    - Average Keyword: Adds 1 slot.<br>
+                    - Irrelevant Keyword: No change.<br><br>
+                Subsequent Rounds<br>
+            1. Dice Roll: Each player rolls the die once to draw Engagements.<br>
+                ○ 1 Like = 1 SEO point<br>
+                ○ 1 Comment = 2 points<br>
+                ○ 1 Share = 3 points<br>
+                ○ 1 Save = 4 points<br>
+            2. Event Card: After drawing, the player draws an Event Card and applies the effect to their post.<br>
+                ○ Positive Effects:<br>
+                    - Collaboration with a celebrity: Roll the die again and add the elements.<br>
+                    - Viral trend: Adds 2 likes.<br>
+                ○ Negative Effects:<br>
+                    - Controversy: Lose 2 likes.<br>
+                    - Technical bug: Do not roll the die in the next round.<br><br> 
+           Points Calculation:<br> The player adds the SEO points earned this round to their total score.<br><br> 
+           End of the Game:<br> The game ends after a defined number of rounds (e.g., five rounds). The player with the most SEO points wins the game!</p> 
+           <a href="#home" class="button">Back to Home</a> 
+        </main> 
+        <footer> 
+           <p>&copy;2024 Boost Your Post</p> 
+        </footer> 
+        <script> 
+           document.querySelectorAll('.button').forEach(button => { 
+           button.addEventListener('click', function(event) { 
+           event.preventDefault(); // Prevent default anchor behavior
+           document.querySelectorAll('main').forEach(main => main.style.display = 'none'); 
+           document.querySelector(this.getAttribute('href')).style.display = 'block'; 
+           }); 
+           }); 
+
+           const dice6 = document.getElementById('dice6'); 
+           const result6 = document.getElementById('result6'); 
+           dice6.addEventListener('click', () => { 
+           const roll6 = Math.floor(Math.random() * 6) + 1; 
+           result6.textContent = `Roll result: ${roll6}`; 
+           }); 
+
+           const dice3 = document.getElementById('dice3'); 
+           const result3 = document.getElementById('result3'); 
+           dice3.addEventListener('click', () => { 
+           const roll3 = Math.floor(Math.random() * 3) + 1; 
+           result3.textContent = `Roll result: ${roll3}`; 
+           }); 
+        </script> 
+    </body> 
+</html>
